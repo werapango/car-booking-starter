@@ -5,7 +5,7 @@
 ## เริ่มใช้งาน
 
 ```bash
-npm create cloudflare@latest car-booking -- --template=werapango/car-booking-starter --no-deploy --no-git
+npm create cloudflare@latest car-booking -- --template=werapango/car-booking-starter --no-deploy --no-git --no-agents
 cd car-booking
 npm run dev            # เปิด http://localhost:8787
 ```
