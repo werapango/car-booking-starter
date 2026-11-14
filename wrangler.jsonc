@@ -1,0 +1,22 @@
+{
+  // ไฟล์ตั้งค่าของ Cloudflare Worker (อ่านโดยคำสั่ง wrangler)
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  // ชื่อ Worker = ส่วนหน้าของ URL  https://<name>.<subdomain>.workers.dev
+  // เปลี่ยนเป็นชื่อของคุณก่อน deploy ครั้งแรก เช่น "car-booking-somchai"
+  "name": "car-booking",
+
+  // ไฟล์โค้ดฝั่งเซิร์ฟเวอร์ (API)
+  "main": "src/index.ts",
+  "compatibility_date": "2025-11-01",
+
+  // ไฟล์หน้าเว็บ (HTML/CSS/JS) ในโฟลเดอร์ public/ ถูกเสิร์ฟให้เบราว์เซอร์โดยตรง
+  // คำขอที่ไม่ตรงกับไฟล์ใด (เช่น /api/...) จะถูกส่งต่อให้ src/index.ts
+  "assets": { "directory": "./public" },
+
+  // เปิด log ดูย้อนหลังได้ใน dashboard และด้วยคำสั่ง  npx wrangler tail
+  "observability": { "enabled": true }
+
+  // ⬇ Lab 2: คำสั่ง  npx wrangler d1 create car-booking-db --binding DB
+  //   จะเพิ่มส่วน "d1_databases" ต่อท้ายตรงนี้ให้เอง (ตอบ Yes เมื่อถาม)
+}

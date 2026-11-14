@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ระบบจองรถ</title>
+  <style>
+    body { font-family: system-ui, "Noto Sans Thai", sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; line-height: 1.6; color: #1f2937; }
+    h1 { margin-bottom: 4px; }
+    .status { padding: 12px 16px; border-radius: 8px; background: #f3f4f6; font-family: ui-monospace, monospace; }
+    .ok { background: #dcfce7; }
+    .bad { background: #fee2e2; }
+  </style>
+</head>
+<body>
+  <h1>🚗 ระบบจองรถ</h1>
+  <p>หน้านี้มาจากไฟล์ <code>public/index.html</code> — เดี๋ยวเราจะสร้างระบบจริงทับหน้านี้ทีละ task</p>
+
+  <h2>สถานะเซิร์ฟเวอร์</h2>
+  <div id="status" class="status">กำลังเรียก /api/health ...</div>
+
+  <script>
+    // หน้าเว็บ (client) เรียก API (server) ผ่าน HTTP — นี่คือ client–server ในหนึ่งบรรทัด
+    fetch("/api/health")
+      .then((r) => r.json())
+      .then((data) => {
+        const el = document.getElementById("status");
+        el.textContent = JSON.stringify(data, null, 2);
+        el.classList.add(data.ok ? "ok" : "bad");
+      })
+      .catch((err) => {
+        const el = document.getElementById("status");
+        el.textContent = "เรียก API ไม่ได้: " + err;
+        el.classList.add("bad");
+      });
+  </script>
+</body>
+</html>
